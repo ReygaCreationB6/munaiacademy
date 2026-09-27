@@ -2,43 +2,46 @@
     "version": 2,
     "cleanUrls": true,
     "trailingSlash": false,
-    "headers": [
+    "builds": [
         {
-            "source": "/sw.js",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=0, must-revalidate"
-                },
-                {
-                    "key": "Service-Worker-Allowed",
-                    "value": "/"
-                }
-            ]
-        },
-        {
-            "source": "/manifest.webmanifest",
-            "headers": [
-                {
-                    "key": "Content-Type",
-                    "value": "application/manifest+json"
-                }
-            ]
-        },
-        {
-            "source": "/src/(.*)",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=3600"
-                }
-            ]
+            "src": "server.js",
+            "use": "@vercel/node"
         }
     ],
-    "rewrites": [
+    "routes": [
         {
-            "source": "/api/(.*)",
-            "destination": "/api/$1"
+            "src": "/src/(.*)",
+            "dest": "/src/$1",
+            "headers": {
+                "Cache-Control": "public, max-age=3600"
+            }
+        },
+        {
+            "src": "/public/(.*)",
+            "dest": "/public/$1"
+        },
+        {
+            "src": "/sw.js",
+            "dest": "/sw.js",
+            "headers": {
+                "Cache-Control": "public, max-age=0, must-revalidate",
+                "Service-Worker-Allowed": "/"
+            }
+        },
+        {
+            "src": "/manifest.webmanifest",
+            "dest": "/manifest.webmanifest",
+            "headers": {
+                "Content-Type": "application/manifest+json"
+            }
+        },
+        {
+            "src": "/api/(.*)",
+            "dest": "server.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "server.js"
         }
     ]
 }
