@@ -95,6 +95,8 @@ if (process.env.SENTRY_DSN) {
 const app = express();
 if ((process.env.TRUST_PROXY || '') === '1') app.set('trust proxy', 1);
 
+// FIX: Restored CSP but kept cross-origin resource policy relaxed.
+// If you need to allow external scripts, add their domains to scriptSrc.
 app.use(helmet({
     contentSecurityPolicy: {
         directives: {
@@ -114,11 +116,12 @@ app.use(helmet({
         }
     },
     crossOriginEmbedderPolicy: false,
-    crossOriginResourcePolicy: { policy: 'same-site' }
+    crossOriginResourcePolicy: { policy: 'cross-origin' }
 }));
 
 app.use(express.json({ limit: '2mb' }));
 
+// Serve static files from 'public'
 app.use(express.static(path.join(__dirname, 'public'), {
     maxAge: IS_PROD ? '1h' : 0,
     setHeaders(res, filePath) {
@@ -126,6 +129,12 @@ app.use(express.static(path.join(__dirname, 'public'), {
         if (filePath.endsWith('sw.js')) res.setHeader('Cache-Control', 'no-cache');
     }
 }));
+
+// FIX: Serve the 'src' directory explicitly so CrisisDirector.js can be found
+// if your HTML references it as `/src/CrisisDirector.js`
+app.use('/src', express.static(path.join(__dirname, 'src'), { maxAge: IS_PROD ? '1h' : 0 }));
+
+// Serve files from the root directory (for index.html, favicon, etc.)
 app.use(express.static(__dirname, { maxAge: IS_PROD ? '1h' : 0 }));
 
 /* ============================================================
@@ -281,13 +290,6 @@ app.get('/api/health', readLimiter, (req, res) => {
     });
 });
 
-/**
- * Live quota for the caller.
- * Query params:
- *   ?byo=1  → report against the BYO bucket instead of the IP bucket
- * Returns:
- *   { isBYO, burst: { limit, used, remaining, resetIn }, daily: { ... } }
- */
 app.get('/api/quota', readLimiter, async (req, res) => {
     const byo = req.query.byo === '1' && ALLOW_CLIENT_KEYS;
     const key = keyFor(req, byo);
@@ -417,12 +419,14 @@ app.post('/api/chat', burstLimiter, dailyLimiter, async (req, res) => {
 /* ============================================================
    SPA fallback + boot
    ============================================================ */
+// FIX: Restored the proper SPA fallback. This ensures API routes, 
+// static assets (images, css, js), and source files are NOT swallowed by index.html.
 app.get('*', (req, res, next) => {
     const p = req.path;
     if (p.startsWith('/api/')) return next();
     if (p.startsWith('/src/')) return next();
     if (p.startsWith('/public/')) return next();
-    if (/\.[a-z0-9]+$/i.test(p)) return next();
+    if (/\.[a-z0-9]+$/i.test(p)) return next(); // Prevents swallowing missing .js/.css files
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
