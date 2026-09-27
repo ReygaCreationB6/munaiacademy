@@ -1,0 +1,17 @@
+/* ============================================================
+   Shared Simulation room
+   ============================================================ */
+
+/* Reuse most of rooms.css. Two additions specific to shared sims. */
+
+.sim-shared .rm-side {
+    background: var(--surface-muted);
+}
+
+.sim-shared .rm-delegate.thinking {
+    animation: rmThinkingPulse 2s ease-in-out infinite;
+}
+
+.sim-shared .rm-speaker-ring .ring-fg {
+    transition: stroke-dashoffset 200ms linear, stroke 200ms var(--ease-out);
+}

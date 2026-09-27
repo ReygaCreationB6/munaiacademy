@@ -1,0 +1,633 @@
+/* ============================================================
+   Shared styles for the four Phase-12 modules
+   Prefix: mx- (module experience)
+   ============================================================ */
+
+.mx-page {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ---------- Setup form card ---------- */
+.mx-setup {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: 22px;
+    box-shadow: var(--shadow-xs);
+}
+
+.mx-setup-title {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+}
+
+.mx-setup-sub {
+    font-size: 13px;
+    color: var(--ink-4);
+    margin-bottom: 20px;
+    line-height: 1.55;
+}
+
+/* ---------- Difficulty picker ---------- */
+.mx-diff {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.mx-diff-opt {
+    padding: 12px 10px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    text-align: center;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all var(--dur) var(--ease-out);
+}
+
+.mx-diff-opt:hover {
+    border-color: var(--line-strong);
+    background: var(--surface-muted);
+}
+
+.mx-diff-opt.active {
+    border-color: var(--accent);
+    background: var(--accent-tint);
+    box-shadow: 0 0 0 1px var(--accent) inset;
+}
+
+.mx-diff-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 2px;
+}
+
+.mx-diff-hint {
+    font-size: 11px;
+    color: var(--ink-4);
+    display: block;
+    line-height: 1.35;
+}
+
+/* ---------- Session layout ---------- */
+.mx-session {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 16px;
+    align-items: start;
+}
+
+.mx-session-side {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: 16px;
+    position: sticky;
+    top: calc(var(--topbar-h) + 20px);
+    font-size: 13px;
+}
+
+.mx-session-side h3 {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    margin: 0 0 10px;
+}
+
+.mx-side-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--line-faint);
+    font-size: 12.5px;
+}
+
+.mx-side-row:last-child {
+    border-bottom: none;
+}
+
+.mx-side-row .k {
+    color: var(--ink-4);
+}
+
+.mx-side-row .v {
+    color: var(--ink);
+    font-weight: 500;
+    text-align: right;
+}
+
+/* ---------- Score badges ---------- */
+.mx-score {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 8px;
+    background: var(--surface-muted);
+    border: 1px solid var(--line);
+    border-radius: var(--r-full);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--ink-3);
+}
+
+.mx-score.good {
+    color: var(--green);
+    background: rgba(62, 124, 92, 0.08);
+    border-color: rgba(62, 124, 92, 0.22);
+}
+
+.mx-score.mid {
+    color: var(--amber);
+    background: rgba(166, 120, 41, 0.08);
+    border-color: rgba(166, 120, 41, 0.22);
+}
+
+.mx-score.poor {
+    color: var(--red);
+    background: rgba(162, 59, 59, 0.08);
+    border-color: rgba(162, 59, 59, 0.22);
+}
+
+/* ---------- Country Research dossier ---------- */
+.mx-dossier {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: 28px 32px;
+    line-height: 1.7;
+}
+
+.mx-dossier h2 {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 28px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+}
+
+.mx-dossier h2:first-child {
+    margin-top: 0;
+}
+
+.mx-dossier h3 {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    margin: 18px 0 8px;
+    color: var(--ink);
+}
+
+.mx-dossier p {
+    margin: 0 0 12px;
+    font-size: 14.5px;
+    color: var(--ink-2);
+}
+
+.mx-dossier ul,
+.mx-dossier ol {
+    padding-left: 22px;
+    margin: 6px 0 14px;
+}
+
+.mx-dossier li {
+    font-size: 14px;
+    margin-bottom: 5px;
+    line-height: 1.6;
+}
+
+.mx-dossier strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+/* Source tags — rendered inline when the AI emits [VERIFIED] etc. */
+.mx-tag {
+    display: inline-block;
+    padding: 1px 6px;
+    margin-right: 4px;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    border-radius: 3px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
+.mx-tag.verified {
+    background: rgba(62, 124, 92, 0.12);
+    color: var(--green);
+}
+
+.mx-tag.analysis {
+    background: rgba(74, 107, 138, 0.12);
+    color: var(--blue-500);
+}
+
+.mx-tag.strategy {
+    background: rgba(166, 132, 44, 0.12);
+    color: var(--gold);
+}
+
+.mx-tag.verify {
+    background: rgba(162, 59, 59, 0.10);
+    color: var(--red);
+}
+
+.mx-session-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    margin-bottom: 8px;
+    transition: all var(--dur) var(--ease-out);
+}
+
+.mx-session-card:hover {
+    border-color: var(--line-strong);
+    background: var(--surface-muted);
+}
+
+.mx-session-card .info {
+    flex: 1;
+    min-width: 0;
+}
+
+.mx-session-card .t {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mx-session-card .s {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--ink-4);
+    margin-top: 3px;
+    letter-spacing: 0.03em;
+}
+
+/* ---------- Debate Trainer ---------- */
+.mx-exchange {
+    margin-bottom: 24px;
+    animation: fadeRise 220ms var(--ease-out) both;
+}
+
+.mx-exchange-role {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.mx-exchange-role .tag {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-tint);
+    padding: 3px 7px;
+    border-radius: 4px;
+}
+
+.mx-exchange-role .who {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.mx-exchange-body {
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-2);
+}
+
+.mx-exchange.user .mx-exchange-body {
+    background: var(--accent-tint);
+    border-color: rgba(91, 146, 229, 0.25);
+    color: var(--ink);
+}
+
+.mx-exchange-feedback {
+    margin-top: 8px;
+    padding: 10px 12px;
+    background: var(--surface-muted);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: var(--ink-3);
+    font-style: italic;
+}
+
+.mx-scorecard {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: 24px 26px;
+}
+
+.mx-scorecard-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line-faint);
+}
+
+.mx-scorecard-row:last-child {
+    border-bottom: none;
+}
+
+.mx-scorecard-row .label {
+    font-size: 13.5px;
+    color: var(--ink-2);
+}
+
+.mx-scorecard-row .bar {
+    grid-column: 1 / -1;
+    height: 4px;
+    background: var(--line);
+    border-radius: var(--r-full);
+    overflow: hidden;
+    margin-top: 6px;
+}
+
+.mx-scorecard-row .bar>div {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-deep) 100%);
+    border-radius: var(--r-full);
+    transition: width 500ms var(--ease-out);
+}
+
+/* ---------- POI Trainer ---------- */
+.mx-poi {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: 22px 24px;
+    margin-bottom: 14px;
+}
+
+.mx-poi-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.mx-poi-quote {
+    padding: 16px 20px;
+    background: var(--accent-tint);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    font-style: italic;
+}
+
+.mx-poi-quote::before {
+    content: '"';
+}
+
+.mx-poi-quote::after {
+    content: '"';
+}
+
+.mx-poi-answer {
+    margin-top: 16px;
+}
+
+.mx-poi-answer textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-sm);
+    resize: vertical;
+    transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+
+.mx-poi-answer textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.mx-poi-eval {
+    margin-top: 14px;
+    padding: 16px 18px;
+    background: var(--surface-muted);
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+}
+
+.mx-poi-eval-row {
+    display: grid;
+    grid-template-columns: 110px 42px 1fr;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line-faint);
+    font-size: 13px;
+    align-items: center;
+}
+
+.mx-poi-eval-row:last-child {
+    border-bottom: none;
+}
+
+.mx-poi-eval-row .crit {
+    color: var(--ink-4);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.mx-poi-eval-row .num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+    color: var(--ink);
+}
+
+.mx-poi-eval-row .note {
+    color: var(--ink-3);
+    font-size: 12.5px;
+}
+
+.mx-poi-tip {
+    margin-top: 12px;
+    padding: 12px 14px;
+    background: var(--accent-tint);
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink);
+}
+
+.mx-poi-tip strong {
+    color: var(--accent-deep);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* ---------- Practice Arena ---------- */
+.mx-challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.mx-challenge {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    text-align: left;
+    cursor: pointer;
+    transition: all var(--dur) var(--ease-out);
+    font-family: inherit;
+}
+
+.mx-challenge:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-sm);
+}
+
+.mx-challenge-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--accent-tint);
+    color: var(--accent);
+    border-radius: 8px;
+}
+
+.mx-challenge-title {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.mx-challenge-desc {
+    font-size: 12.5px;
+    color: var(--ink-4);
+    line-height: 1.5;
+    flex: 1;
+}
+
+.mx-challenge-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line-faint);
+}
+
+.mx-challenge-xp {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+}
+
+.mx-challenge-best {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--ink-4);
+    letter-spacing: 0.04em;
+}
+
+.mx-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .mx-session {
+        grid-template-columns: 1fr;
+    }
+
+    .mx-session-side {
+        position: static;
+    }
+
+    .mx-challenge-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .mx-diff {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .mx-stat-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .mx-poi-eval-row {
+        grid-template-columns: 90px 36px 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .mx-challenge-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mx-dossier {
+        padding: 20px 18px;
+    }
+}

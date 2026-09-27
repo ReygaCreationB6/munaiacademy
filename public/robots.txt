@@ -1,0 +1,24 @@
+# MUN AI Academy — robots.txt
+# Search engines may index public content. API and static assets are off-limits.
+
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /legal/terms
+Allow: /legal/privacy
+Allow: /legal/cookies
+
+Disallow: /api/
+Disallow: /src/
+Disallow: /ws
+Disallow: /room/
+Disallow: /rooms
+Disallow: /settings
+Disallow: /analytics
+Disallow: /coach
+Disallow: /login
+
+# Be polite — one crawl per second is plenty for a small site.
+Crawl-delay: 1
+
+Sitemap: https://your-domain.com/sitemap.xml

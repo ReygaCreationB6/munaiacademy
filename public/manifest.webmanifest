@@ -1,0 +1,29 @@
+{
+    "name": "MUN AI Academy",
+    "short_name": "MUN AI",
+    "description": "Learn, practice, and simulate Model United Nations with AI.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "any",
+    "background_color": "#0a1a33",
+    "theme_color": "#0a1a33",
+    "categories": [
+        "education",
+        "productivity"
+    ],
+    "icons": [
+        {
+            "src": "/icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        },
+        {
+            "src": "/icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "maskable"
+        }
+    ]
+}

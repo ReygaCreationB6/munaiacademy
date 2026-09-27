@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a1a33" />
+    <meta name="color-scheme" content="light" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Primary meta -->
+    <title>MUN AI Academy — Master Model United Nations with AI</title>
+    <meta name="description"
+        content="Learn diplomacy, build arguments, train speeches, negotiate with AI delegates, and simulate a full Model United Nations conference." />
+    <meta name="author" content="MUN AI Academy" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MUN AI Academy" />
+    <meta property="og:title" content="MUN AI Academy — Master Model United Nations with AI" />
+    <meta property="og:description"
+        content="Learn diplomacy, build arguments, train speeches, negotiate with AI delegates, and simulate a full MUN conference." />
+    <meta property="og:url" content="https://your-domain.com/" />
+    <meta property="og:image" content="https://your-domain.com/icon.svg" />
+    <meta property="og:image:alt" content="MUN AI Academy" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MUN AI Academy — Master Model United Nations with AI" />
+    <meta name="twitter:description"
+        content="Learn diplomacy, build arguments, train speeches, negotiate with AI delegates, and simulate a full MUN conference." />
+    <meta name="twitter:image" content="https://your-domain.com/icon.svg" />
+
+    <link rel="canonical" href="https://your-domain.com/" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="./src/styles/main.css" />
+    <link rel="stylesheet" href="./src/styles/coach.css" />
+    <link rel="stylesheet" href="./src/styles/modules.css" />
+    <link rel="stylesheet" href="./src/styles/rooms.css" />
+    <link rel="stylesheet" href="./src/styles/polish.css" />
+    <link rel="stylesheet" href="./src/styles/pages.css" />
+    <link rel="stylesheet" href="./src/styles/simroom.css" />
+
+    <!-- Structured data: WebApplication -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "MUN AI Academy",
+    "url": "https://your-domain.com/",
+    "description": "AI-powered Model United Nations training platform. Learn diplomacy, practice speeches and debates, and run full conference simulations.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "audience": {
+      "@type": "EducationalAudience",
+      "educationalRole": "student"
+    }
+  }
+  </script>
+
+    <!-- Structured data: FAQ (helps search snippets) -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is MUN AI Academy?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A free AI-powered training platform for Model United Nations delegates. It includes lessons, a speech trainer, a debate trainer, a POI trainer, a position paper builder, a resolution builder, and a full stateful conference simulation." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is MUN AI Academy free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The built-in AI has a free tier per visitor. You can also bring your own API key for unlimited use." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need an account?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. You can use the platform locally without signing in. Signing in enables cloud sync across devices." }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <div id="routeAriaLive" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+    <script type="module" src="./src/main.js"></script>
+    <script>
+        if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+            const isLocalhost = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+            if (isLocalhost) {
+                navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
+                if (window.caches) caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
+            } else {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/sw.js').catch(() => { });
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
