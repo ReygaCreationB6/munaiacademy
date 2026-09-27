@@ -11,29 +11,15 @@
     "routes": [
         {
             "src": "/src/(.*)",
-            "dest": "/src/$1",
-            "headers": {
-                "Cache-Control": "public, max-age=3600"
-            }
+            "dest": "/src/$1"
         },
         {
             "src": "/public/(.*)",
             "dest": "/public/$1"
         },
         {
-            "src": "/sw.js",
-            "dest": "/sw.js",
-            "headers": {
-                "Cache-Control": "public, max-age=0, must-revalidate",
-                "Service-Worker-Allowed": "/"
-            }
-        },
-        {
-            "src": "/manifest.webmanifest",
-            "dest": "/manifest.webmanifest",
-            "headers": {
-                "Content-Type": "application/manifest+json"
-            }
+            "src": "/(main.css|coach.css|modules.css|rooms.css|polish.css|pages.css|simroom.css|main.js)",
+            "dest": "/src/$1"
         },
         {
             "src": "/api/(.*)",
